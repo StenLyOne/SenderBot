@@ -42,7 +42,8 @@ app.post("/send", async (req, res) => {
 
 app.post("/visit", async (req, res) => {
   try {
-    const text = `👀 Новый визит на сайт! Кто-то только что открыл страницу.`;
+    const { country, city } = req.body;
+    const text = `👀 Новый визит на сайт! Кто-то только что открыл страницу. Страна:${country}, Город: ${city}`;
 
     await axios.post(TELEGRAM_API, {
       chat_id: CHAT_ID,
